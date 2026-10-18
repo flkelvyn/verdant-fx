@@ -1,0 +1,21 @@
+name: Compilar Plugin Windows
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Configurar CMake
+      run: cmake -S . -B build -A x64
+      
+    - name: Compilar Release
+      run: cmake --build build --config Release
+      
+    - name: Guardar DLL gerada
+      uses: actions/upload-artifact@v4
+      with:
+        name: verdant-fx-dll
+        path: build/Release/dxgi.dll
