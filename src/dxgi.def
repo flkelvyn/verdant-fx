@@ -1,0 +1,10 @@
+; Verdant FX — exports do proxy dxgi.dll (apenas as funções públicas documentadas).
+; RISCO CONHECIDO: o d3d11.dll do Windows pode importar também funções não documentadas
+; do dxgi.dll. Valide na sua máquina (ver docs/ARQUITETURA.md, seção "Riscos").
+LIBRARY dxgi
+EXPORTS
+    CreateDXGIFactory                = VFX_CreateDXGIFactory
+    CreateDXGIFactory1               = VFX_CreateDXGIFactory1
+    CreateDXGIFactory2               = VFX_CreateDXGIFactory2
+    DXGIGetDebugInterface1           = VFX_DXGIGetDebugInterface1
+    DXGIDeclareAdapterRemovalSupport = VFX_DXGIDeclareAdapterRemovalSupport
